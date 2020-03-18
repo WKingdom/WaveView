@@ -4,15 +4,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/black"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+    <ImageView
+        android:id="@+id/ivBlur"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:scaleType="fitXY" />
+
+    <com.hopechart.waveview.view.WaveView
+        android:id="@+id/waveView"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="20dp"/>
+
+    <com.hopechart.waveview.view.CircleImageView
+        android:id="@+id/ivAlbum"
+        android:layout_width="187dp"
+        android:layout_height="187dp"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center_horizontal"
+        app:layout_constraintBottom_toBottomOf="@id/waveView"
+        app:layout_constraintLeft_toLeftOf="@id/waveView"
+        app:layout_constraintRight_toRightOf="@id/waveView"
+        app:layout_constraintTop_toTopOf="@id/waveView" />
+
+    <ImageView
+        android:id="@+id/ivPlayPause"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_media_on_play"
+        android:theme="@style/CircleRippleGray32"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/waveView"
+        android:layout_marginTop="30dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

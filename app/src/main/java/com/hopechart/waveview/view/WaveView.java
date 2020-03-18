@@ -155,7 +155,7 @@ public class WaveView extends View {
             mCreateTime = System.currentTimeMillis();
             Random random = new Random();
             angle = random.nextInt(360);
-            radioDot = random.nextInt(4);
+            radioDot = random.nextInt(5);
             if (radioDot == 0) radioDot = 2;
         }
 
