@@ -17,7 +17,7 @@ import java.util.Random;
  * 水波纹特效
  */
 public class WaveView extends View {
-    private float mInitialRadius = 91;   // 初始波纹半径
+    private float mInitialRadius = 190;   // 初始波纹半径
     private float mMaxRadius;   // 最大波纹半径
     private long mDuration = 2000; // 一个波纹从创建到消失的持续时间
     private int mSpeed = 500;   // 波纹的创建速度，每500ms创建一个
@@ -48,7 +48,7 @@ public class WaveView extends View {
 
     public WaveView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        mPaint.setStrokeWidth(1);
+        mPaint.setStrokeWidth(7);
     }
 
     public void setStyle(Paint.Style style) {
@@ -155,8 +155,8 @@ public class WaveView extends View {
             mCreateTime = System.currentTimeMillis();
             Random random = new Random();
             angle = random.nextInt(360);
-            radioDot = random.nextInt(5);
-            if (radioDot == 0) radioDot = 2;
+            radioDot = random.nextInt(15);
+            if (radioDot < 10) radioDot = 10;
         }
 
         int getAlpha() {

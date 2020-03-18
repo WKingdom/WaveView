@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-
+  private  var animatorIsPlay = true
     private val mAnimator by lazy {
         ObjectAnimator.ofFloat(ivAlbum, "rotation", 0.0f, 360.0f)
 
@@ -45,11 +45,23 @@ class MainActivity : AppCompatActivity() {
             Blurry.with(this@MainActivity)
                 .radius(15)
                 .sampling(8)
-                .color(Color.argb(180, 0, 0, 0))
+                .color(Color.argb(80, 0, 0, 0))
 //                .async()
                 .capture(ivBlur)
                 .into(ivBlur)
         }, 300)
+        ivPlayPause.setOnClickListener {
+            animatorIsPlay = !animatorIsPlay
+            if(animatorIsPlay){
+                waveView.start()
+                mAnimator.resume()
+                ivPlayPause.setImageResource(R.drawable.ic_media_on_play)
+            }else{
+                waveView.stop()
+                mAnimator.pause()
+                ivPlayPause.setImageResource(R.drawable.ic_media_on_pause)
+            }
+        }
     }
 
     override fun onDestroy() {
@@ -68,9 +80,9 @@ class MainActivity : AppCompatActivity() {
 
     @Suppress("DEPRECATION")
     private fun initWaveView() {
-        waveView.setDuration(2100)
+        waveView.setDuration(4000)
         waveView.setStyle(Paint.Style.STROKE)
-        waveView.setSpeed(500)
+        waveView.setSpeed(400)
         waveView.setColor(resources.getColor(R.color.colorTextDim))
         waveView.setInterpolator(AccelerateInterpolator(1.2f))
         waveView.start()
